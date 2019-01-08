@@ -1,0 +1,38 @@
+buildscript {
+    ext {
+        springBootVersion = "2.1.1.RELEASE"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}
+
+
+plugins {
+    id "java"
+}
+
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.1.RELEASE'
+
+}
+
+bootRun.environment([
+        "WELCOME_MESSAGE": "hello",
+])
+
+test.environment([
+        "WELCOME_MESSAGE": "Hello from test",
+])
